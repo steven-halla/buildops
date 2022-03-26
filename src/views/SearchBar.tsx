@@ -1,0 +1,52 @@
+import styled from "styled-components";
+
+import React, {FC} from "react";
+
+const SearchBarDiv = styled.div`
+  
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown::before {
+    position: absolute;
+    content: " \\2193";
+    top: 0px;
+    right: 0px;
+    height: 20px;
+    width: 20px;
+  }
+  
+  
+`;
+
+export const SearchBar: FC  = () => {
+
+  return (
+    <SearchBarDiv>
+      {/*<p>Assests to work on</p>*/}
+      {/*  <div className="dropdown">*/}
+      {/*    <input type="text" placeholder="Search Assets"/ >*/}
+
+      {/*    <p className="down-arrow"> <i className="arrow"></i>*/}
+
+      {/*    </p>*/}
+
+        {/*</div>*/}
+      <p>Assests to work on</p>
+      <div className="dropdown">
+        <input type="text" placeholder="Search Assets"/>
+      </div>
+    </SearchBarDiv>
+
+
+  )
+
+
+
+};
+
+
+
