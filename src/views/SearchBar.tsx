@@ -12,10 +12,10 @@ const SearchBarDiv = styled.div`
 
   .dropdown::before {
     position: absolute;
-    content: " \\2193";
+    content: " \\02228";
     top: 0px;
     right: 0px;
-    height: 20px;
+    height: 15px;
     width: 20px;
   }
   
