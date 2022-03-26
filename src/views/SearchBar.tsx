@@ -26,26 +26,12 @@ export const SearchBar: FC  = () => {
 
   return (
     <SearchBarDiv>
-      {/*<p>Assests to work on</p>*/}
-      {/*  <div className="dropdown">*/}
-      {/*    <input type="text" placeholder="Search Assets"/ >*/}
-
-      {/*    <p className="down-arrow"> <i className="arrow"></i>*/}
-
-      {/*    </p>*/}
-
-        {/*</div>*/}
       <p>Assests to work on</p>
       <div className="dropdown">
-        <input type="text" placeholder="Search Assets"/>
+        <input type="text" placeholder="Search Assets" />
       </div>
     </SearchBarDiv>
-
-
   )
-
-
-
 };
 
 
