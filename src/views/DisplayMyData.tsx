@@ -10,14 +10,14 @@ const DisplayMyDataDiv = styled.div`
     margin: auto;
     padding: 2px;
     max-width:55em;
-   
-    
-    
-    
     border-style: solid;
     color: red;
     border-color: red;
     background-color: skyblue;
+  }
+  
+  ul {
+    list-style: none;
   }
   
   
