@@ -9,7 +9,8 @@ const DisplayMyDataDiv = styled.div`
     justify-content: center;
     margin: auto;
     padding: 2px;
-    max-width:55em;
+    min-width:55em;
+    max-width: 56em;
     border-style: solid;
     color: red;
     border-color: red;
@@ -49,7 +50,7 @@ export const DisplayMyData: FC = () => {
         <ul>
           {
             products.map(productObjects => (
-                <li>{productObjects.ProductName}   :    {productObjects.ProductDescription}</li>
+                <li ><input type="checkbox"/> {productObjects.ProductName}   :    {productObjects.ProductDescription}</li>
               )
             )}
         </ul>
