@@ -4,3 +4,8 @@ export interface  Product {
   productName: string;
   productDescription: string;
 }
+
+export interface ProductGroupProps {
+  productType: string,
+  products: Product[],
+}
