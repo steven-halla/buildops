@@ -16,6 +16,7 @@ const StyledProductList = styled.div`
     border-style: solid;
     color: red;
     border-color: red;
+    
     background-color: skyblue;
     
     .product-list-select-all-checkbox {
