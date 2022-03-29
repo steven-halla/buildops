@@ -106,11 +106,16 @@ export const ProductList: FC<ProductListProps> = (props) => {
 
   },[])
 
+  const selectAllProducts = console.log("Hi");
+
   return (
     <StyledProductList>
       <div className="product-list">
         <div className="product-list-select-all-checkbox">
-          <input type="checkbox" />Select all assets
+          <label htmlFor="checkboxall">
+            <input id="checkboxall"  type="checkbox" onClick={() => selectAllProducts}/>Select all assets
+
+          </label>
         </div>
         <div className="product-group-list">
           {groupedProductJsx}

@@ -3,7 +3,7 @@ export interface  Product {
   productType: string;
   productName: string;
   productDescription: string;
-  checkboxValue: boolean;
+  checkboxValue?: boolean;
 }
 
 export interface ProductGroupProps {

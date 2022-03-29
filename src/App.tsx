@@ -53,7 +53,7 @@ const StyledApp = styled.div`
 const App = () => {
 
   const products : Product[] = [
-    { checkboxValue: false,  productType: "cats" , productName: "siamese", productDescription: "very chatty cat"},
+    {checkboxValue: false,  productType: "cats" , productName: "siamese", productDescription: "very chatty cat"},
     {checkboxValue: false, productType: "cats", productName: "tabby", productDescription: "its favorite soda is tab"},
     {checkboxValue: false, productType: "birds", productName: "humming", productDescription: "loves to hum"},
 
