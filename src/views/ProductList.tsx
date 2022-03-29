@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import React, {FC} from "react";
+import React, {FC, useEffect, useState} from "react";
 
 import _ from 'lodash';
 import {Product, ProductGroupProps} from "../interfaces/Product";
@@ -16,7 +16,6 @@ const StyledProductList = styled.div`
     border-style: solid;
     color: red;
     border-color: red;
-    
     background-color: skyblue;
     
     .product-list-select-all-checkbox {
@@ -29,7 +28,6 @@ const StyledProductList = styled.div`
       display: flex;
       flex-flow: column nowrap;
       width: 100%;
-      
       color: blue;
 
       .product-group {
@@ -101,11 +99,18 @@ export const ProductList: FC<ProductListProps> = (props) => {
       />;
     });
 
+  const [checkAll, setCheckAll] = useState(false);
+
+  useEffect(() => {
+    return setCheckAll(checkAll);
+
+  },[])
+
   return (
     <StyledProductList>
       <div className="product-list">
         <div className="product-list-select-all-checkbox">
-          <input type="checkbox"/>Select all assets
+          <input type="checkbox" />Select all assets
         </div>
         <div className="product-group-list">
           {groupedProductJsx}
@@ -157,5 +162,6 @@ const ProductGroup: FC<ProductGroupProps> = (props) => {
       </div>
     </div>
   );
+
 }
 

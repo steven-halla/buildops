@@ -3,6 +3,7 @@ import { SearchBar } from './views/SearchBar';
 import {ProductList} from "./views/ProductList";
 import {Product} from "./interfaces/Product";
 import styled from "styled-components";
+import {isBoolean} from "lodash";
 
 const StyledApp = styled.div`
   * {
@@ -50,17 +51,18 @@ const StyledApp = styled.div`
 `;
 
 const App = () => {
-  const products : Product[] = [
-    {productType: "cats" , productName: "siamese", productDescription: "very chatty cat"},
-    {productType: "cats", productName: "tabby", productDescription: "its favorite soda is tab"},
-    {productType: "birds", productName: "humming", productDescription: "loves to hum"},
 
-    {productType: "dogs", productName: "doberman pincher", productDescription: "Favorite holiday is st patricks day"},
-    {productType: "dogs", productName: "husky", productDescription: "super fluffy"},
-    {productType: "dogs", productName: "golden retriever", productDescription: "it retrieves gold"},
-    {productType: "birds", productName: "blue jay", productDescription: "why is it named jay?"},
-    {productType: "birds", productName: "robin", productDescription: "wheres batman?"},
-    {productType: "cats", productName: "persian", productDescription: "its hails from persia "},
+  const products : Product[] = [
+    { checkboxValue: false,  productType: "cats" , productName: "siamese", productDescription: "very chatty cat"},
+    {checkboxValue: false, productType: "cats", productName: "tabby", productDescription: "its favorite soda is tab"},
+    {checkboxValue: false, productType: "birds", productName: "humming", productDescription: "loves to hum"},
+
+    {checkboxValue: false,  productType: "dogs", productName: "doberman pincher", productDescription: "Favorite holiday is st patricks day"},
+    {checkboxValue: false, productType: "dogs", productName: "husky", productDescription: "super fluffy"},
+    {checkboxValue: false, productType: "dogs", productName: "golden retriever", productDescription: "it retrieves gold"},
+    {checkboxValue: false, productType: "birds", productName: "blue jay", productDescription: "why is it named jay?"},
+    {checkboxValue: false, productType: "birds", productName: "robin", productDescription: "wheres batman?"},
+    {checkboxValue: false, productType: "cats", productName: "persian", productDescription: "its hails from persia "},
   ];
 
   return (
