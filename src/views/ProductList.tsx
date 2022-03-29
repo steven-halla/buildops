@@ -22,6 +22,7 @@ const StyledProductList = styled.div`
     .product-list-select-all-checkbox {
       width: 100%;
       background-color: pink;
+      
     }
 
     .product-group-list {
