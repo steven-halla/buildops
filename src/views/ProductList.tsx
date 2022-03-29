@@ -43,7 +43,6 @@ const StyledProductList = styled.div`
         .product-group-product-list {
           display: flex;
           flex-flow: column nowrap;
-          
           width: 100%;
           
           .product {
