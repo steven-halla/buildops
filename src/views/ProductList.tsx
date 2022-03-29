@@ -27,6 +27,7 @@ const StyledProductList = styled.div`
       display: flex;
       flex-flow: column nowrap;
       width: 100%;
+      
       color: blue;
 
       .product-group {
@@ -38,6 +39,10 @@ const StyledProductList = styled.div`
 
         .product-type {
           background-color: lightgray;
+          
+          .class-checkbox {
+            background-color: chocolate;
+          }
         }
 
         .product-group-product-list {
@@ -125,6 +130,9 @@ const ProductGroup: FC<ProductGroupProps> = (props) => {
   return (
     <div className="product-group">
       <div className="product-type">
+        <div className="class-checkbox">
+          <input type="checkbox"/>
+        </div>
         {productType}
       </div>
       <div className="product-group-product-list">
