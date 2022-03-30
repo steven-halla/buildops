@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-import React, {FC} from "react";
+import React, {FC, useState} from "react";
+import {Product} from "../model/Product";
 
 const SearchBarDiv = styled.div`
   
@@ -47,7 +48,30 @@ const SearchBarDiv = styled.div`
   
 `;
 
-export const SearchBar: FC  = () => {
+
+interface ProductGroupList {
+  // productName: string,
+  products: Product[],
+}
+
+export const SearchBar: FC<ProductGroupList>  = (props ) => {
+  // const {productName} = props;
+
+  const products = props.products
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const filteredProducts = products.filter((product: Product) => {
+    if (!searchQuery) {
+      return true;
+    }
+
+    return (
+      <SearchBarDiv>
+        product.productName.toLowerCase().includes(searchQuery.toLocaleLowerCase())
+      </SearchBarDiv>
+    );
+  });
+
 
   return (
     <SearchBarDiv>
@@ -56,7 +80,9 @@ export const SearchBar: FC  = () => {
         <p>hi</p>
        </div>
         <div className="dropdown">
-          <input type="text" placeholder="Search Assets" />
+          <input type="text" placeholder="Search Assets" onChange={event => {
+            setSearchQuery(event.target.value)
+          }} />
         </div>
       </div>
 

@@ -68,7 +68,7 @@ const App = () => {
   return (
     <StyledApp>
       <div className="App">
-        <SearchBar/>
+        <SearchBar  products={products}/>
         <ProductList products={products} />
       </div>
     </StyledApp>
