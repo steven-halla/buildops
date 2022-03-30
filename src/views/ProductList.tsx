@@ -17,58 +17,46 @@ const StyledProductList = styled.div`
     color: red;
     border-color: red;
     background-color: skyblue;
-
     .product-list-select-all-checkbox {
       width: 100%;
       background-color: pink;
-
     }
-
     .product-group-list {
       display: flex;
       flex-flow: column nowrap;
       width: 100%;
       color: blue;
-
       .product-group {
         display: flex;
         flex-flow: column nowrap;
         align-items: flex-start;
         margin: 5px;
         background-color: lightgreen;
-
         .product-type {
           background-color: lightgray;
-
           .class-checkbox {
             background-color: chocolate;
           }
         }
-
         .product-group-product-list {
           display: flex;
           flex-flow: column nowrap;
           width: 100%;
-
           .product {
             display: flex;
             flex-flow: row nowrap;
             justify-content: space-between;
             text-align: left;
             margin: 5px;
-
             .product-checkbox {
               background-color: purple;
-
               .product-checkbox-input {
               }
             }
-
             .product-name {
               background-color: yellow;
               width: 30%;
             }
-
             .product-description {
               padding-left: 15em;
               background-color: indianred;
@@ -185,40 +173,54 @@ const ProductGroup: FC<ProductGroupProps> = (props) => {
   //   }
   // };
 
-  return (
-    <div className="product-group">
-      <div className="product-type">
-        <div className="class-checkbox">
-          <input type="checkbox"/>
+  const handleClickAllGroups = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log(event);
+    const isChecked = event.target.checked;
+    setProductsState(
+      productsState.map((product: Product): Product => {
+        product.isChecked = isChecked;
+        return product;
+      })
+    )
+  }
+    return (
+      <div className="product-group">
+        <div className="product-type">
+          <div className="class-checkbox">
+            <label htmlFor="checkgroup">
+              <input type="checkbox" id="checkgroup"
+              onChange={handleClickAllGroups}
+              />
+            </label>
+          </div>
+          {productType}
         </div>
-        {productType}
-      </div>
-      <div className="product-group-product-list">
-        {
-          productsState.map((product: Product) => (
-              <div className="product" key={product.productName}>
-                <div className="product-checkbox">
-                  <input
-                    id={product.productName}
-                    className="product-checkbox-input"
-                    type="checkbox"
-                    onChange={handleSingleProductClicked}
-                    checked={product.isChecked}
-                  />
+        <div className="product-group-product-list">
+          {
+            productsState.map((product: Product) => (
+                <div className="product" key={product.productName}>
+                  <div className="product-checkbox">
+                    <input
+                      id={product.productName}
+                      className="product-checkbox-input"
+                      type="checkbox"
+                      onChange={handleSingleProductClicked}
+                      checked={product.isChecked}
+                    />
+                  </div>
+                  <div className="product-name">
+                    {product.productName}
+                  </div>
+                  <div className="product-description">
+                    {product.productDescription}
+                  </div>
                 </div>
-                <div className="product-name">
-                  {product.productName}
-                </div>
-                <div className="product-description">
-                  {product.productDescription}
-                </div>
-              </div>
+              )
             )
-          )
-        }
+          }
+        </div>
       </div>
-    </div>
-  );
+    );
 
-}
+  }
 
