@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import React, {FC, useEffect, useState} from "react";
+import React, {ChangeEvent, FC, useEffect, useState} from "react";
 
 import _ from 'lodash';
 import {Product, ProductGroupProps} from "../interfaces/Product";
@@ -17,11 +17,11 @@ const StyledProductList = styled.div`
     color: red;
     border-color: red;
     background-color: skyblue;
-    
+
     .product-list-select-all-checkbox {
       width: 100%;
       background-color: pink;
-      
+
     }
 
     .product-group-list {
@@ -39,7 +39,7 @@ const StyledProductList = styled.div`
 
         .product-type {
           background-color: lightgray;
-          
+
           .class-checkbox {
             background-color: chocolate;
           }
@@ -49,7 +49,7 @@ const StyledProductList = styled.div`
           display: flex;
           flex-flow: column nowrap;
           width: 100%;
-          
+
           .product {
             display: flex;
             flex-flow: row nowrap;
@@ -59,18 +59,22 @@ const StyledProductList = styled.div`
 
             .product-checkbox {
               background-color: purple;
-              .product-checkbox-input {}
+
+              .product-checkbox-input {
+              }
             }
+
             .product-name {
               background-color: yellow;
               width: 30%;
             }
+
             .product-description {
               padding-left: 15em;
               background-color: indianred;
               width: 60%
             }
-          }          
+          }
         }
       }
     }
@@ -94,6 +98,7 @@ export const ProductList: FC<ProductListProps> = (props) => {
       // console.log("product group entry 0" + productGroupEntry[0]);
       // console.log("product group entry 1" + productGroupEntry[1]);
       return <ProductGroup
+        key={productType} // TODO why is this required?
         productType={productType}
         products={products}
       />;
@@ -104,17 +109,22 @@ export const ProductList: FC<ProductListProps> = (props) => {
   useEffect(() => {
     return setCheckAll(checkAll);
 
-  },[])
+  }, [])
 
-  const selectAllProducts = console.log("Hi");
+  const selectAllProductsClicked = (event: ChangeEvent<HTMLInputElement>) => {
+
+  }
 
   return (
     <StyledProductList>
       <div className="product-list">
         <div className="product-list-select-all-checkbox">
           <label htmlFor="checkboxall">
-            <input id="checkboxall"  type="checkbox" onClick={() => selectAllProducts}/>Select all assets
-
+            <input
+              id="checkboxall"
+              type="checkbox"
+              onChange={selectAllProductsClicked}
+            />Select all assets
           </label>
         </div>
         <div className="product-group-list">
@@ -137,7 +147,43 @@ export const ProductList: FC<ProductListProps> = (props) => {
 const ProductGroup: FC<ProductGroupProps> = (props) => {
   const {productType, products} = props;
 
-  console.log("products" + products);
+  const [allChecked, setAllChecked] = useState<boolean>(false);
+  const [productsState, setProductsState] = useState<Product[]>(products);
+
+  // useEffect(() => {
+  //   setProductList(products)
+  // }, [productList]);
+
+  const handleSingleProductClicked = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log(event);
+    const isChecked = event.target.checked;
+    setProductsState(
+      productsState.map((product: Product): Product => {
+        console.log(event.target.id);
+        if (product.productName == event.target.id) { // is there a better way than id? it works.
+          product.isChecked = isChecked;
+        }
+        return product;
+      })
+    )
+    // const checkedProduct = checked.target.event;
+    // setChecked([...checkedProduct]);
+    // if (!checked) {
+    //   setChecked(checkboxValue.filter(products:Product[] => products !== checkboxValue));
+    // }
+  }
+
+  // const booleanChange = (event) => {
+  //   if (checkboxValue === False) {
+  //     checkboxValue = true;
+  //     event.target.click()
+  //     console.log("set to true")
+  //   } else {
+  //     checkboxValue = false
+  //     event.target.click()
+  //     console.log("set to false")
+  //   }
+  // };
 
   return (
     <div className="product-group">
@@ -149,10 +195,16 @@ const ProductGroup: FC<ProductGroupProps> = (props) => {
       </div>
       <div className="product-group-product-list">
         {
-          products.map((product: Product) => (
-              <div className="product">
+          productsState.map((product: Product) => (
+              <div className="product" key={product.productName}>
                 <div className="product-checkbox">
-                  <input className="product-checkbox-input" type="checkbox"/>
+                  <input
+                    id={product.productName}
+                    className="product-checkbox-input"
+                    type="checkbox"
+                    onChange={handleSingleProductClicked}
+                    checked={product.isChecked}
+                  />
                 </div>
                 <div className="product-name">
                   {product.productName}

@@ -53,16 +53,16 @@ const StyledApp = styled.div`
 const App = () => {
 
   const products : Product[] = [
-    {checkboxValue: false,  productType: "cats" , productName: "siamese", productDescription: "very chatty cat"},
-    {checkboxValue: false, productType: "cats", productName: "tabby", productDescription: "its favorite soda is tab"},
-    {checkboxValue: false, productType: "birds", productName: "humming", productDescription: "loves to hum"},
+    {isChecked: false,  productType: "cats" , productName: "siamese", productDescription: "very chatty cat"},
+    {isChecked: false, productType: "cats", productName: "tabby", productDescription: "its favorite soda is tab"},
+    {isChecked: false, productType: "birds", productName: "humming", productDescription: "loves to hum"},
 
-    {checkboxValue: false,  productType: "dogs", productName: "doberman pincher", productDescription: "Favorite holiday is st patricks day"},
-    {checkboxValue: false, productType: "dogs", productName: "husky", productDescription: "super fluffy"},
-    {checkboxValue: false, productType: "dogs", productName: "golden retriever", productDescription: "it retrieves gold"},
-    {checkboxValue: false, productType: "birds", productName: "blue jay", productDescription: "why is it named jay?"},
-    {checkboxValue: false, productType: "birds", productName: "robin", productDescription: "wheres batman?"},
-    {checkboxValue: false, productType: "cats", productName: "persian", productDescription: "its hails from persia "},
+    {isChecked: false,  productType: "dogs", productName: "doberman pincher", productDescription: "Favorite holiday is st patricks day"},
+    {isChecked: false, productType: "dogs", productName: "husky", productDescription: "super fluffy"},
+    {isChecked: false, productType: "dogs", productName: "golden retriever", productDescription: "it retrieves gold"},
+    {isChecked: false, productType: "birds", productName: "blue jay", productDescription: "why is it named jay?"},
+    {isChecked: false, productType: "birds", productName: "robin", productDescription: "wheres batman?"},
+    {isChecked: false, productType: "cats", productName: "persian", productDescription: "its hails from persia "},
   ];
 
   return (
