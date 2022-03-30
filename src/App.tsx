@@ -1,7 +1,7 @@
 import React from 'react';
-import { SearchBar } from './views/SearchBar';
-import {ProductList} from "./views/ProductList";
-import {Product} from "./interfaces/Product";
+import { SearchBar } from './view/SearchBar';
+import {ProductList} from "./view/ProductList";
+import {Product} from "./model/Product";
 import styled from "styled-components";
 import {isBoolean} from "lodash";
 
