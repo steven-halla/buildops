@@ -2,6 +2,12 @@ import React from 'react';
 import {ProductList} from "./view/ProductList";
 import {Product} from "./model/Product";
 import styled from "styled-components";
+import useCollapse from 'react-collapsed';
+import Accordion from '@material-ui/core/ExpansionPanel';
+import AccordionSummary from '@material-ui/core/ExpansionPanelSummary';
+import AccordionDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 
 const StyledApp = styled.div`
   * {
@@ -50,6 +56,9 @@ const StyledApp = styled.div`
 
 const App = () => {
 
+  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+
+
   const products : Product[] = [
     {isChecked: false,  productType: "cats" , productName: "siamese", productDescription: "very chatty cat"},
     {isChecked: false, productType: "cats", productName: "tabby", productDescription: "its favorite soda is tab"},
@@ -66,10 +75,16 @@ const App = () => {
   return (
     <StyledApp>
       <div className="App">
-        <ProductList products={products} />
+
+          <ProductList products={products} />
+
+
       </div>
+
+
     </StyledApp>
   );
+
 }
 
 export default App;

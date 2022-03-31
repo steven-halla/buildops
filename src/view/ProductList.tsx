@@ -6,6 +6,12 @@ import _ from 'lodash';
 import {Product} from "../model/Product";
 import {ProductGroup} from "./ProductGroup";
 import {SearchBar} from "./SearchBar";
+import Collapsible from 'react-collapsible';
+
+import Accordion from '@material-ui/core/ExpansionPanel';
+import AccordionSummary from '@material-ui/core/ExpansionPanelSummary';
+import AccordionDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const StyledProductList = styled.div`
   .product-list {
@@ -129,6 +135,8 @@ export const ProductList: FC<ProductListProps> = (props) => {
 
   return (
     <StyledProductList>
+
+
       <SearchBar
         products={props.products} // important, if i pass in allProductsState, the product list never resets, must always filter from the FULL (original list of products)
         setProducts={setAllProductsState}
@@ -145,9 +153,16 @@ export const ProductList: FC<ProductListProps> = (props) => {
             Select all assets
           </label>
         </div>
-        <div className="product-group-list">
-          {groupedProductJsx}
-        </div>
+
+                <Collapsible trigger="Click here to show/hide products" type="button">
+                    <div className="product-group-list">
+                      {groupedProductJsx}
+                    </div>
+
+
+                </Collapsible>
+
+
       </div>
 
       {/*<button onClick={addProductHandler}>Add new product</button> lets build this later*/}

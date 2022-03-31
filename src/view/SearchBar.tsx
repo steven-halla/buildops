@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 import React, {FC, useEffect, useState} from "react";
 import {Product} from "../model/Product";
+import Accordion from '@material-ui/core/ExpansionPanel';
+import AccordionSummary from '@material-ui/core/ExpansionPanelSummary';
+import AccordionDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {ProductList} from "./ProductList";
 
 const SearchBarDiv = styled.div`
 
@@ -56,11 +61,16 @@ interface SearchBarProps {
 }
 
 export const SearchBar: FC<SearchBarProps> = (props) => {
+
+
   const {products, setProducts} = props;
 
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   useEffect(() => {
+
+
+
     const filteredProducts = products.filter((product: Product): boolean => {
       if (!searchQuery) {
         return true;
@@ -75,26 +85,47 @@ export const SearchBar: FC<SearchBarProps> = (props) => {
   }, [searchQuery]);
 
 
+
+
+
+
   return (
+
     <SearchBarDiv>
-      <div className="search-bar-container">
-        <div className="task-header">
-          <p>hi</p>
+        <div className="search-bar-container">
+
+
+          <div className="task-header">
+
+
+
+          </div>
+          <div className="dropdown">
+
+
+
+                <input
+                  type="text"
+                  placeholder="Search Assets"
+                  onChange={event => {
+                    setSearchQuery(event.target.value);
+                  }}
+                  value={searchQuery}
+
+                /><br/>
+
+
+
+
+          </div>
         </div>
-        <div className="dropdown">
-          <input
-            type="text"
-            placeholder="Search Assets"
-            onChange={event => {
-              setSearchQuery(event.target.value);
-            }}
-            value={searchQuery}
-          />
-        </div>
-      </div>
+
+
 
     </SearchBarDiv>
   )
+
+
 };
 
 
