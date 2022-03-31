@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
-import React, {FC, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {Product} from "../model/Product";
 
 const SearchBarDiv = styled.div`
-  
+
   .search-bar-container {
     display: flex;
     justify-content: center;
     margin: auto;
     padding: 2px;
-    min-width:55em;
+    min-width: 55em;
     max-width: 56em;
     height: 10em;
     border-style: solid;
@@ -18,11 +18,11 @@ const SearchBarDiv = styled.div`
     border-color: red;
     background-color: skyblue;
   }
-  
+
   input {
-    min-width:67.5em;
+    min-width: 67.5em;
     height: 2em;
-    min-width:55em;
+    min-width: 55em;
 
     border-style: solid;
     color: red;
@@ -30,7 +30,7 @@ const SearchBarDiv = styled.div`
     background-color: skyblue;
 
   }
-  
+
   .dropdown {
     position: relative;
     display: inline-block;
@@ -44,45 +44,52 @@ const SearchBarDiv = styled.div`
     height: 15px;
     width: 20px;
   }
-  
-  
+
+
 `;
 
 
-interface ProductGroupList {
-  // productName: string,
-  products: Product[],
+interface SearchBarProps {
+  products: Product[];
+  setProducts: (products: Product[]) => void;
+  // setProducts: the type is a function that takes Product[] as a parameter and returns nothing
 }
 
-export const SearchBar: FC<ProductGroupList>  = (props ) => {
-  // const {productName} = props;
+export const SearchBar: FC<SearchBarProps> = (props) => {
+  const {products, setProducts} = props;
 
-  const products = props.products
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const filteredProducts = products.filter((product: Product) => {
-    if (!searchQuery) {
-      return true;
-    }
+  useEffect(() => {
+    const filteredProducts = products.filter((product: Product): boolean => {
+      if (!searchQuery) {
+        return true;
+      }
+      return product.productName.toLowerCase().includes(searchQuery.toLowerCase());
+    });
+    setProducts(filteredProducts);
 
-    return (
-      <SearchBarDiv>
-        product.productName.toLowerCase().includes(searchQuery.toLocaleLowerCase())
-      </SearchBarDiv>
-    );
-  });
+    console.log(filteredProducts);
+
+    // every time searchQuery changes, it activates our effect (calls this function)
+  }, [searchQuery]);
 
 
   return (
     <SearchBarDiv>
       <div className="search-bar-container">
-       <div className="task-header">
-        <p>hi</p>
-       </div>
+        <div className="task-header">
+          <p>hi</p>
+        </div>
         <div className="dropdown">
-          <input type="text" placeholder="Search Assets" onChange={event => {
-            setSearchQuery(event.target.value)
-          }} />
+          <input
+            type="text"
+            placeholder="Search Assets"
+            onChange={event => {
+              setSearchQuery(event.target.value);
+            }}
+            value={searchQuery}
+          />
         </div>
       </div>
 

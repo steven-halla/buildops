@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC, useState} from "react";
+import React, {ChangeEvent, FC, useEffect, useState} from "react";
 import {Product} from "../model/Product";
 
 interface ProductGroupProps {
@@ -10,6 +10,15 @@ export const ProductGroup: FC<ProductGroupProps> = (props) => {
   const {productType} = props;
 
   const [groupProductsState, setGroupProductsState] = useState<Product[]>(props.products);
+
+  // super important, when props.products changes (because text was filtered) the useState(initialData) is NOT recalled.
+  // it seems that we have to add another effect to call the setGroupProductsState for updates after the initial creation of the state variable.
+  // i saw that props.products was changing, but that groupProductsState was NOT changing.
+  useEffect(() => {
+    setGroupProductsState(props.products);
+  }, [props.products]);
+
+  // console.log(props.products);
 
   const isAllChecked = groupProductsState
     .map(product => product.isChecked) // first get all the isChecked booleans

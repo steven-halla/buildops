@@ -1,9 +1,7 @@
 import React from 'react';
-import { SearchBar } from './view/SearchBar';
 import {ProductList} from "./view/ProductList";
 import {Product} from "./model/Product";
 import styled from "styled-components";
-import {isBoolean} from "lodash";
 
 const StyledApp = styled.div`
   * {
@@ -68,7 +66,6 @@ const App = () => {
   return (
     <StyledApp>
       <div className="App">
-        <SearchBar  products={products}/>
         <ProductList products={products} />
       </div>
     </StyledApp>

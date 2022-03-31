@@ -5,6 +5,7 @@ import React, {ChangeEvent, FC, useState} from "react";
 import _ from 'lodash';
 import {Product} from "../model/Product";
 import {ProductGroup} from "./ProductGroup";
+import {SearchBar} from "./SearchBar";
 
 const StyledProductList = styled.div`
   .product-list {
@@ -83,6 +84,7 @@ const StyledProductList = styled.div`
 
 interface ProductListProps {
   products: Product[];
+
 }
 
 export const ProductList: FC<ProductListProps> = (props) => {
@@ -102,6 +104,8 @@ export const ProductList: FC<ProductListProps> = (props) => {
     .map((productGroupEntry: [string, Product[]]) => {
       const productType: string = productGroupEntry[0];
       const products: Product[] = productGroupEntry[1];
+      // console.log("---");
+      // console.log(products);
       // console.log("grouped products" + groupedProducts);
       // console.log("product group entry 0" + productGroupEntry[0]);
       // console.log("product group entry 1" + productGroupEntry[1]);
@@ -125,6 +129,10 @@ export const ProductList: FC<ProductListProps> = (props) => {
 
   return (
     <StyledProductList>
+      <SearchBar
+        products={props.products} // important, if i pass in allProductsState, the product list never resets, must always filter from the FULL (original list of products)
+        setProducts={setAllProductsState}
+      />
       <div className="product-list">
         <div className="product-list-select-all-checkbox">
           <label htmlFor="checkboxall">
