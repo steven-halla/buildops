@@ -142,25 +142,28 @@ export const ProductList: FC<ProductListProps> = (props) => {
         setProducts={setAllProductsState}
       />
       <div className="product-list">
-        <div className="product-list-select-all-checkbox">
-          <label htmlFor="checkboxall">
-            <input
-              id="checkboxall"
-              type="checkbox"
-              onChange={handleClickAllProducts}
-          //    checked={isAllChecked}
-            />
-            Select all assets
-          </label>
-        </div>
 
-                <Collapsible trigger="Click here to show/hide products" type="button">
+                <Collapsible trigger="Click text to show/hide products" type="button">
+
+                  <div className="product-list-select-all-checkbox">
+                    <label htmlFor="checkboxall">
+                      <input
+                        id="checkboxall"
+                        type="checkbox"
+                        onChange={handleClickAllProducts}
+                        //    checked={isAllChecked}
+                      />
+                      Select all assets
+                    </label>
+                  </div>
                     <div className="product-group-list">
                       {groupedProductJsx}
                     </div>
 
 
                 </Collapsible>
+
+
 
 
       </div>
