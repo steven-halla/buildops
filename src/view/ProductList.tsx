@@ -22,33 +22,34 @@ const StyledProductList = styled.div`
     min-width: 55em;
     max-width: 56em;
     border-style: solid;
-    color: red;
-    border-color: red;
-    background-color: skyblue;
+    //color: red;
+    border-color: black;
+    //background-color: skyblue;
 
     .product-list-select-all-checkbox {
       width: 100%;
-      background-color: pink;
+      //background-color: pink;
     }
 
     .product-group-list {
       display: flex;
       flex-flow: column nowrap;
       width: 100%;
-      color: blue;
+      //color: blue;
 
       .product-group {
         display: flex;
         flex-flow: column nowrap;
         align-items: flex-start;
         margin: 5px;
-        background-color: lightgreen;
+        //background-color: lightgreen;
 
         .product-type {
+          width: 150px;
           background-color: lightgray;
 
           .class-checkbox {
-            background-color: chocolate;
+            background-color: lightgray;
           }
         }
 
@@ -65,20 +66,20 @@ const StyledProductList = styled.div`
             margin: 5px;
 
             .product-checkbox {
-              background-color: purple;
+              //background-color: purple;
 
               .product-checkbox-input {
               }
             }
 
             .product-name {
-              background-color: yellow;
-              width: 30%;
+              //background-color: lightgray;
+              width: 35%;
             }
 
             .product-description {
               padding-left: 15em;
-              background-color: indianred;
+              //background-color: lightgray;
               width: 60%
             }
           }
@@ -162,10 +163,6 @@ export const ProductList: FC<ProductListProps> = (props) => {
 
 
                 </Collapsible>
-
-
-
-
       </div>
 
       {/*<button onClick={addProductHandler}>Add new product</button> lets build this later*/}

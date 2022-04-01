@@ -14,25 +14,26 @@ const SearchBarDiv = styled.div`
     display: flex;
     justify-content: center;
     margin: auto;
+    margin-top: 15px;
     padding: 2px;
-    min-width: 55em;
-    max-width: 56em;
-    height: 10em;
-    border-style: solid;
-    color: red;
-    border-color: red;
-    background-color: skyblue;
+    min-width: 33em;
+    max-width: 56.2em;
+    height: 3em;
+    //border-style: solid;
+ 
+ 
+    //background-color: skyblue;
   }
 
   input {
-    min-width: 67.5em;
+    min-width: 67em;
+    max-width: 72em;
     height: 2em;
-    min-width: 55em;
 
     border-style: solid;
-    color: red;
-    border-color: red;
-    background-color: skyblue;
+    //color: grey;
+    //border-color: grey;
+    //background-color: lightgray;
 
   }
 
@@ -49,6 +50,8 @@ const SearchBarDiv = styled.div`
     height: 15px;
     width: 20px;
   }
+  
+  
 
 
 `;
@@ -95,14 +98,7 @@ export const SearchBar: FC<SearchBarProps> = (props) => {
         <div className="search-bar-container">
 
 
-          <div className="task-header">
-
-
-
-          </div>
           <div className="dropdown">
-
-
 
                 <input
                   type="text"
