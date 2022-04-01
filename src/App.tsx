@@ -56,14 +56,10 @@ const StyledApp = styled.div`
 
 const App = () => {
 
-  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
-
-
   const products : Product[] = [
     {isChecked: false,  productType: "Cats" , productName: "Siamese", productDescription: "Very chatty cat."},
     {isChecked: false, productType: "Cats", productName: "Tabby", productDescription: "It's favorite soda is tab."},
     {isChecked: false, productType: "Birds", productName: "Humming", productDescription: "Loves to hum."},
-
     {isChecked: false,  productType: "Dogs", productName: "Doberman Pincher", productDescription: "Favorite holiday is St. Patricks Day."},
     {isChecked: false, productType: "Dogs", productName: "Husky", productDescription: "Super fluffy."},
     {isChecked: false, productType: "Dogs", productName: "Golden Retriever", productDescription: "It retrieves gold."},
@@ -75,16 +71,10 @@ const App = () => {
   return (
     <StyledApp>
       <div className="App">
-
           <ProductList products={products} />
-
-
       </div>
-
-
     </StyledApp>
   );
-
 }
 
 export default App;

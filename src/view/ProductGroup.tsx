@@ -12,8 +12,8 @@ export const ProductGroup: FC<ProductGroupProps> = (props) => {
   const [groupProductsState, setGroupProductsState] = useState<Product[]>(props.products);
 
   // super important, when props.products changes (because text was filtered) the useState(initialData) is NOT recalled.
-  // it seems that we have to add another effect to call the setGroupProductsState for updates after the initial creation of the state variable.
-  // i saw that props.products was changing, but that groupProductsState was NOT changing.
+  // it seems that I have to add another effect to call the setGroupProductsState for updates after the initial creation of the state variable.
+  // I saw that props.products was changing, but that groupProductsState was NOT changing.
   useEffect(() => {
     setGroupProductsState(props.products);
   }, [props.products]);
@@ -30,7 +30,7 @@ export const ProductGroup: FC<ProductGroupProps> = (props) => {
     setGroupProductsState(
       groupProductsState.map((product: Product): Product => {
         console.log(event.target.id);
-        if (product.productName == event.target.id) { // is there a better way than id? it works.
+        if (product.productName == event.target.id) { // Is there a better way than id? It works.
           product.isChecked = isChecked;
         }
         return product;
@@ -91,5 +91,4 @@ export const ProductGroup: FC<ProductGroupProps> = (props) => {
       </div>
     </div>
   );
-
 }

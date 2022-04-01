@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import React, {FC, useEffect, useState} from "react";
 import {Product} from "../model/Product";
 import Accordion from '@material-ui/core/ExpansionPanel';
@@ -19,22 +18,13 @@ const SearchBarDiv = styled.div`
     min-width: 33em;
     max-width: 56.2em;
     height: 3em;
-    //border-style: solid;
- 
- 
-    //background-color: skyblue;
   }
 
   input {
     min-width: 67em;
     max-width: 72em;
     height: 2em;
-
     border-style: solid;
-    //color: grey;
-    //border-color: grey;
-    //background-color: lightgray;
-
   }
 
   .dropdown {
@@ -50,10 +40,6 @@ const SearchBarDiv = styled.div`
     height: 15px;
     width: 20px;
   }
-  
-  
-
-
 `;
 
 
@@ -65,15 +51,10 @@ interface SearchBarProps {
 
 export const SearchBar: FC<SearchBarProps> = (props) => {
 
-
   const {products, setProducts} = props;
-
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   useEffect(() => {
-
-
-
     const filteredProducts = products.filter((product: Product): boolean => {
       if (!searchQuery) {
         return true;
@@ -87,19 +68,10 @@ export const SearchBar: FC<SearchBarProps> = (props) => {
     // every time searchQuery changes, it activates our effect (calls this function)
   }, [searchQuery]);
 
-
-
-
-
-
   return (
-
     <SearchBarDiv>
         <div className="search-bar-container">
-
-
           <div className="dropdown">
-
                 <input
                   type="text"
                   placeholder="Search Assets"
@@ -107,21 +79,11 @@ export const SearchBar: FC<SearchBarProps> = (props) => {
                     setSearchQuery(event.target.value);
                   }}
                   value={searchQuery}
-
                 /><br/>
-
-
-
-
           </div>
         </div>
-
-
-
     </SearchBarDiv>
   )
-
-
 };
 
 
